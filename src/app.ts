@@ -1,6 +1,6 @@
 import express, { Application } from "express";
 import cors from "cors";
-import mealRoutes from "../src/routes/Mealroute";
+import mealRoutes from "./routes/Mealroute";
 
 const app: Application = express();
 
