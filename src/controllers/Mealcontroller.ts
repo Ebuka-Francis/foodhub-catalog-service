@@ -4,14 +4,14 @@ import { Meal } from "../models/meal";
 // POST /meals
 export const createMeal = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { name, description, price, image, category, cookId } = req.body;
+    const { name, description, price, image, category, place, cookId } = req.body;
 
-    if (!name || !description || !price || !image || !category || !cookId) {
+    if (!name || !price || !image || !category || !place || !cookId) {
       res.status(400).json({ message: "All meal fields are required" });
       return;
     }
 
-    const meal = await Meal.create({ name, description, price, image, category, cookId });
+    const meal = await Meal.create({ name, description, price, image, category, place, cookId });
     res.status(201).json({ meal });
   } catch (err) {
     res.status(500).json({ message: "Failed to create meal", error: (err as Error).message });
